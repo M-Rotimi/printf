@@ -1,2 +1,3 @@
-Printf
-Low level programming - C Programming group project
+Printf 
+Low level programming - C Programming
+A collaboration ALX project with Rotimi and Temilayo Mathew

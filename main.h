@@ -40,8 +40,8 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
-va_list list, char buffer[], int flags, int width, int precision, int size);
+int hold_print(const char *fmt, int *nd,
+va_list ls, char buff[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
 
@@ -80,9 +80,9 @@ int print_pointer(va_list types, char buffer[],
 
 /* Funciotns to handle other specifiers */
 int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
+int figure_width(const char *format, int *k, va_list ls);
 int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
+int figure_size(const char *format, int *k);
 
 /*Function to print string in reverse*/
 int print_reverse(va_list types, char buffer[],
@@ -93,25 +93,24 @@ int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int handle_write_char(char c, char buffer[],
+int hold_view_char(char c, char buff[],
 	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
+int view_numb(int is_neg, int nd, char buff[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
-	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
-	int width, int flags, char padd, char extra_c, int padd_start);
+int view_num(int nd, char buff[], int flags, int width, int pec,
+	int length, char ad, char xt_c);
+int view_pointer(char buff[], int j, int wen,
+	int width, int flags, char ad, char xt_c, int ad_start);
 
-int write_unsgnd(int is_negative, int ind,
-char buffer[],
-	int flags, int width, int precision, int size);
+int view_unsgnd(int is_neg, int j, char buff[],
+	int flags, int width, int pec, int size);
 
-/****************** UTILS ******************/
-int is_printable(char);
-int append_hexa_code(char, char[], int);
-int is_digit(char);
+/****************** DIGITS ******************/
+int is_printable(char c);
+int add_hexa_code(char ascii_value, char buff[], int j);
+int is_digit(char c);
 
-long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
+long int change_size_value(long int numb, int size);
+long int change_size_unsgnd(unsigned long int numb, int size);
 
 #endif /* MAIN_H */
