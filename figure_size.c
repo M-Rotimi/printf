@@ -16,7 +16,7 @@ int figure_size(const char *format, int *k)
 		size = S_SHORT;
 
 	if (size == 0)
-		*K = cal - 1;
+		*k = cal - 1;
 	else
 		*k = cal;
 

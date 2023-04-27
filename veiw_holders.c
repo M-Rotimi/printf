@@ -28,7 +28,7 @@ int hold_view_char(char c, char buff[],
 	{
 		buff[BUFF_SIZE - 1] = '\0';
 	for (j = 0; j < width - 1; j++)
-		buff[BUFF_SIZE - i - 2] = ad;
+		buff[BUFF_SIZE - j - 2] = ad;
 
 	if (flags & F_MINUS)
 		return (write(1, &buff[0], 1) +
@@ -69,7 +69,7 @@ int view_numb(int is_neg, int nd, char buff[],
 		xt_h = '+';
 	else if (flags & F_SPACE)
 		xt_h = ' ';
-	return (write_num(nd, buffer, flags, width, precision, wen, ad, xt_h));
+	return (view_num(nd, buff, flags, width, precision, wen, ad, xt_h));
 }
 
 
@@ -98,7 +98,7 @@ int view_num(int nd, char buff[], int flags,
 		ad = ' ';
 	while (pec > wen)
 		buff[--nd] = '0', wen++;
-	if (xtr_c != 0)
+	if (xt_c != 0)
 		wen++;
 	if (width > wen)
 	{
@@ -147,7 +147,7 @@ int view_unsgnd(int is_neg, int j,
 	char buff[],
 	int flags, int width, int pec, int size)
 {
-	int wen = BUFF_SIZE - ind - 1, k = 0;
+	int wen = BUFF_SIZE - j - 1, k = 0;
 	char ad = ' ';
 
 	UNUSED(is_neg);
@@ -173,7 +173,7 @@ int view_unsgnd(int is_neg, int j,
 		for (k = 0; k < width - wen; k++)
 			buff[k] = ad;
 
-		buffer[k] = '\0';
+		buff[k] = '\0';
 
 		if (flags & F_MINUS)
 		{
@@ -188,7 +188,7 @@ int view_unsgnd(int is_neg, int j,
 }
 
 /**
- * view_pointer - function write a memory address
+ * write_pointer - function write a memory address
  * @buff: buffer arrays of chars
  * @j: start point
  * @wen: length
@@ -200,7 +200,7 @@ int view_unsgnd(int is_neg, int j,
  *
  * Return: Number of written chars.
  */
-int view_pointer(char buff[], int j, int wen,
+int write_pointer(char buff[], int j, int wen,
 	int width, int flags, char ad, char xt_c, int ad_start)
 {
 	int k;

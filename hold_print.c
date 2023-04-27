@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * hold_print - function that prints an argument
+ * handle_print - function that prints an argument
  * @fmt: Formatted string
  * @ls: arguments list.
  * @nd: parameter
@@ -11,12 +11,12 @@
  * @size: Size specifier
  * Return: 1 or 2 always.
  */
-int hold_print(const char *fmt, int *nd, va_list ls, char buff[],
+int handle_print(const char *fmt, int *nd, va_list ls, char buff[],
 		int flags, int width, int precision, int size)
 {
 	int j, unknow_wen = 0, release_chars = -1;
 	fmt_t fmt_types[] = {
-		{'c', print_char}, {'s', print_string}, {'%', print_percent},
+		{'c', print_char}, {'s', print_str}, {'%', print_percent},
 		{'j', print_int}, {'d', print_int}, {'b', print_binary},
 		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
 		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
@@ -42,8 +42,8 @@ int hold_print(const char *fmt, int *nd, va_list ls, char buff[],
 				--(*nd);
 			return (1);
 		}
-		unknow_wen += write(1, &fmt[*ind], 1);
+		unknow_wen += write(1, &fmt[*nd], 1);
 		return (unknow_wen);
 	}
-	return (released_chars);
+	return (release_chars);
 }
