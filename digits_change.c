@@ -17,7 +17,7 @@ int is_printable(char c)
 /**
  * add_hexa_code - function that adds hexadecimal code to buffer
  * @buff: buffer array of chars.
- * @i: start point to add.
+ * @j: start point to add.
  * @ascii_value: ASSCI value.
  * Return: Always 3
  */

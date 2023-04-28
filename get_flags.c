@@ -3,7 +3,7 @@
 /**
  * figure_flags - Calculates active flags
  * @format: Formatted string
- * @*k: take a parameter.
+ * @k: take a parameter.
  * Return: Flags:
  */
 int figure_flags(const char *format, int *k)
